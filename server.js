@@ -1,5 +1,8 @@
 const express = require('express');
 const multer = require('multer');
+const AWS = require('aws-sdk');
+var s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
 const port = process.env.PORT || 8000;
 
 const app = express();
