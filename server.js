@@ -1,14 +1,10 @@
 const express = require('express');
 const multer = require('multer');
 const AWS = require('aws-sdk');
-<<<<<<< HEAD
-var s3 = new AWS.S3({apiVersion: '2006-03-01'});
-=======
 const {accessKey, secretKey} = require('./config');
 
 AWS.config.update({ accessKeyId: accessKey, secretAccessKey: secretKey, region: 'ap-southeast-1' });
 //const memoryStorage = multer.memoryStorage;
->>>>>>> 094d4e998a66bb73539ab1a181128de7f38284f6
 
 const port = process.env.PORT || 8000;
 
@@ -23,18 +19,6 @@ var storage = multer.diskStorage({
         cb(null, './upload');
     },
     filename: (req, file, cb) => {
-<<<<<<< HEAD
-        //console.log(file.originalname.substr(file.originalname.length - 3));
-        cb(null, `${new Date().getTime()}.${file.originalname.substr(file.originalname.length - 3)}`);
-    }
-})
-var upload = multer({storage: storage});
-
-
-app.post('/upload', upload.single('avatar'), (req, res) => {
-    console.log(req.body);
-    res.json(req.file)
-=======
         cb(null, `${new Date().getTime()}.${file.originalname.substr(file.originalname.length - 3)}`);
     }
 })
@@ -60,6 +44,5 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
         
     });
     
->>>>>>> 094d4e998a66bb73539ab1a181128de7f38284f6
 });
 app.listen(port, ()=>console.log(`server running on port: ${port}`));
